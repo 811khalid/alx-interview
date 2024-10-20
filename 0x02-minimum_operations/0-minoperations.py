@@ -3,6 +3,7 @@
 Module for calculating the minimum number of operations to achieve n H characters.
 """
 
+
 def minOperations(n):
     """Calculates the minimum number of operations to achieve n H characters."""
     if n <= 1:
@@ -19,4 +20,3 @@ def minOperations(n):
         divisor += 1
 
     return operations
-
