@@ -1,7 +1,7 @@
 # 0-validate_utf8.py
 
 def validUTF8(data):
-    # Number of bytes in the current UTF-8 character
+    # Number of bytes remaining in the current UTF-8 character
     num_bytes = 0
     
     # Masks to check the start byte and continuation bytes
@@ -20,7 +20,7 @@ def validUTF8(data):
                 num_bytes = 2
             elif (byte >> 3) == 0b11110:  # 4-byte character
                 num_bytes = 3
-            elif (byte >> 7):  # Invalid single-byte character (must start with 0xxxxxxx)
+            elif (byte >> 7):  # Invalid 1-byte character (should be 0xxxxxxx)
                 return False
         else:
             # Check if it's a valid continuation byte (10xxxxxx)
@@ -28,6 +28,6 @@ def validUTF8(data):
                 return False
             num_bytes -= 1
 
-    # If num_bytes is not zero, then we have incomplete characters
+    # All characters should be complete (num_bytes should be 0)
     return num_bytes == 0
 
