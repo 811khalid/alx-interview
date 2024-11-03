@@ -1,8 +1,18 @@
 #!/usr/bin/python3
-
-# 0-validate_utf8.py
+"""
+Module for validating UTF-8 encoding
+"""
 
 def validUTF8(data):
+    """
+    Determines if a given data set represents a valid UTF-8 encoding.
+    
+    Parameters:
+    data (List[int]): List of integers representing bytes of data.
+    
+    Returns:
+    bool: True if data is a valid UTF-8 encoding, else False.
+    """
     # Number of bytes remaining in the current UTF-8 character
     num_bytes = 0
     
@@ -11,7 +21,7 @@ def validUTF8(data):
     mask2 = 1 << 6  # 01000000
 
     for byte in data:
-        # We only need to consider the 8 least significant bits of each integer
+        # Only consider the least significant 8 bits
         byte = byte & 0xFF
 
         if num_bytes == 0:
@@ -32,4 +42,3 @@ def validUTF8(data):
 
     # All characters should be complete (num_bytes should be 0)
     return num_bytes == 0
-
