@@ -1,10 +1,11 @@
 #!/usr/bin/python3
 '''N Queens Challenge'''
 
-
 import sys
 
+
 def solve_nqueens(n):
+
     solutions = []
     placed_queens = []
 
